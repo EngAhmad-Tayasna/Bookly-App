@@ -12,7 +12,7 @@ class BookListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kBookDEtailsView);
+        GoRouter.of(context).push(AppRouter.kBookDetailsView);
       },
       child: SizedBox(
         height: 125,
@@ -50,8 +50,9 @@ class BookListViewItem extends StatelessWidget {
                   ),
                   Text(
                     'J.K. Rowling',
-                    style: Styles.textStyle14
-                        .copyWith(color: const Color(0xff707070)),
+                    style: Styles.textStyle14.copyWith(
+                      color: const Color(0xff707070),
+                    ),
                   ),
                   const SizedBox(
                     height: 3,

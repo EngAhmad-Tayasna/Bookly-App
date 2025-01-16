@@ -5,9 +5,11 @@ import 'package:bookly_app/features/splash/presentation/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {
+  
   static String kHomeView = '/homeView';
-  static String kBookDEtailsView = '/bookDEtailsView';
+  static String kBookDetailsView = '/bookDetailsView';
   static String kSearchView = '/searchView';
+
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -19,7 +21,7 @@ abstract class AppRouter {
         builder: (context, state) => const HomeView(),
       ),
       GoRoute(
-        path: kBookDEtailsView,
+        path: kBookDetailsView,
         builder: (context, state) => const BookDetailsView(),
       ),
       GoRoute(
