@@ -1,9 +1,9 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dartz/dartz.dart';
 import 'package:bookly_app/core/errors/failures.dart';
 import 'package:bookly_app/core/utils/api_service.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/data/repos/home_repo.dart';
+import 'package:dio/dio.dart';
 
 class HomeRepoImpl implements HomeRepo {
   final ApiService apiService;
@@ -23,7 +23,17 @@ class HomeRepoImpl implements HomeRepo {
 
       return right(books);
     } catch (e) {
-      return left(ServerFailure());
+      if (e is DioException) {
+        return left(
+          ServerFailure.fromDioError(e),
+        );
+      }
+
+      return left(
+        ServerFailure(
+          errMessage: e.toString(),
+        ),
+      );
     }
   }
 
